@@ -1,3 +1,13 @@
+
+# jdbc
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.3.195:3306/employees?characterEncoding=utf8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 监控相关配置
 management:
   endpoints:
     web:

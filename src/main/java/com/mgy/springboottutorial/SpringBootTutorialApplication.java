@@ -2,6 +2,7 @@ package com.mgy.springboottutorial;
 
 import com.mgy.ChatService;
 import com.mgy.springboottutorial.beans.A;
+import com.mgy.springboottutorial.jdbctest.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,11 +30,6 @@ public class SpringBootTutorialApplication {
         a.print();
 
         log.info("=====================");
-
-        // ChatService chatService = context.getBean(ChatService.class);
-
-        // String ret = chatService.question("我想问你一些问题");
-        // log.info("ret:{}", ret);
 
     }
 
