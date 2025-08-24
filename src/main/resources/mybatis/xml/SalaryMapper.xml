@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.mgy.springboottutorial.mybatisdemo.SalaryMapper">
+
+    <insert id="save" parameterType="Salary">
+        insert into salaries(emp_no,salary,from_date,to_date) values (#{empNo},#{salary},#{fromDate},#{toDate})
+    </insert>
+
+    <select id="selectAll" resultType="Salary" parameterType="Integer">
+        select * from salaries limit #{rows}
+    </select>
+
+</mapper>
