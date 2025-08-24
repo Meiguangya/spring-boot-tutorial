@@ -16,10 +16,10 @@ public class EmployeeService {
     private EmployeeDao employeeDao;
 
     @Transactional(rollbackFor = Exception.class)
-    public void test(int num) {
+    public void test(int empNo) {
 
         Employee employee = new Employee();
-        employee.setEmpNo(9000104);
+        employee.setEmpNo(empNo);
         employee.setGender("M");
         employee.setBirthDate(LocalDate.of(1989, 1, 1));
         employee.setHireDate(LocalDate.of(1999, 12, 1));
@@ -28,7 +28,7 @@ public class EmployeeService {
 
         employeeDao.save(employee);
 
-        int i = 1 / num;
+        int i = 1 / empNo;
 
         log.info("插入数据完成");
 

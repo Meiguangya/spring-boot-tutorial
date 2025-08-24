@@ -13,22 +13,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-tutorial</name>
     <description>Spring Boot tutorial</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+
+    <packaging>jar</packaging>
+
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -48,11 +39,11 @@
         </dependency>
 
         <!--自己写一个starter 引入自定义的starter-->
-		<dependency>
-			<groupId>com.mgy</groupId>
-			<artifactId>chat-spring-boot-starter</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
+        <dependency>
+            <groupId>com.mgy</groupId>
+            <artifactId>chat-spring-boot-starter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- 监控 -->
         <dependency>

@@ -20,7 +20,7 @@ public class ListenReadEvent {
 
         log.info("应用准备就绪，我要开始操作了");
         try {
-            Thread.sleep(3000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

@@ -96,3 +96,6 @@ public ConfigurableApplicationContext run(String... args) {
 ### Spring Boot 测试最佳实践
 
 ### Spring Boot 与响应式编程（WebFlux）
+
+
+### 整合JDBC的自动装配
