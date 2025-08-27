@@ -39,11 +39,11 @@
         </dependency>
 
         <!--自己写一个starter 引入自定义的starter-->
-        <dependency>
-            <groupId>com.mgy</groupId>
-            <artifactId>chat-spring-boot-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.mgy</groupId>-->
+<!--			<artifactId>chat-spring-boot-starter</artifactId>-->
+<!--			<version>1.0-SNAPSHOT</version>-->
+<!--		</dependency>-->
 
         <!-- 监控 -->
         <dependency>
@@ -76,6 +76,13 @@
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>3.0.4</version>
+        </dependency>
+
+        <!-- PostgreSQL 驱动 -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
     </dependencies>

@@ -1,4 +1,4 @@
-package com.mgy.springboottutorial.mybatisdemo;
+package com.mgy.springboottutorial.mybatisdemo.mysql;
 
 import com.mgy.springboottutorial.entity.Salary;
 import org.apache.ibatis.annotations.Mapper;

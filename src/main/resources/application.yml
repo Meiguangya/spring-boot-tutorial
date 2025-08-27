@@ -1,10 +1,39 @@
 # jdbc
 spring:
+  jackson:
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
   datasource:
-    url: jdbc:mysql://192.168.3.195:3306/employees?characterEncoding=utf8
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    mysql:
+      # url: jdbc:mysql://192.168.3.195:3306/employees?characterEncoding=utf8
+      jdbc-url: jdbc:mysql://192.168.3.195:3306/employees?characterEncoding=utf8
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      hikari:
+        pool-name: MysqlHikariPool
+        maximum-pool-size: 20
+        minimum-idle: 5
+        connection-timeout: 30000
+        idle-timeout: 600000
+        max-lifetime: 1800000
+        keepalive-time: 300000
+
+    # pgsql配置
+    postgres:
+      jdbc-url: jdbc:postgresql://192.168.3.195:5432/pagila?currentSchema=public&TimeZone=Asia/Shanghai
+      username: admin
+      password: 123456
+      driver-class-name: org.postgresql.Driver
+      hikari:
+        pool-name: PostgresHikariPool
+        maximum-pool-size: 15
+        minimum-idle: 3
+        connection-timeout: 30000
+        idle-timeout: 600000
+        max-lifetime: 1800000
+        keepalive-time: 300000
+
 
 # 监控相关配置
 management:
@@ -19,9 +48,32 @@ management:
       show-conditions: true
 
 
-# 集成mybatis相关的配置
-mybatis:
-  type-aliases-package: com.mgy.springboottutorial.entity
-  mapper-locations: classpath:mybatis/xml/*.xml
-  configuration:
-    map-underscore-to-camel-case: true
+# 集成mybatis相关的配置 加了配置类了 这里面没用了
+#mybatis:
+#  type-aliases-package: com.mgy.springboottutorial.entity
+#  mapper-locations: classpath:mybatis/xml/mysql/*.xml
+#  configuration:
+#    map-underscore-to-camel-case: true
+
+
+
+logging:
+  level:
+    # 显示指定 Mapper 接口的日志级别
+    com.mgy.springboottutorial.mybatisdemo: debug
+    # 或者开启整个 MyBatis 的日志
+    org.apache.ibatis: debug
+    # 显示 JDBC 参数（可选）
+    org.springframework.jdbc.core.JdbcTemplate: debug
+    # 👇 开启 Spring Test 事务日志
+    org.springframework.test.context.transaction: DEBUG
+    # 👇 开启 Spring 事务核心日志（可选）
+    org.springframework.transaction: DEBUG
+    # 👇 开启事务同步管理器日志（更详细）
+    org.springframework.transaction.support: TRACE
+    # 👇 开启数据源事务日志（可选）
+    org.springframework.jdbc.datasource: DEBUG
+
+  config: classpath:logback-spring.xml
+  file:
+    name: ./logs/app.log  # 可选：Spring Boot 默认日志文件

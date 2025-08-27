@@ -1,7 +1,7 @@
 package com.mgy.springboottutorial.mybatistest;
 
 import com.mgy.springboottutorial.entity.Salary;
-import com.mgy.springboottutorial.mybatisdemo.SalaryMapper;
+import com.mgy.springboottutorial.mybatisdemo.mysql.SalaryMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -37,8 +36,9 @@ public class SalaryTest {
         Salary salary = new Salary();
         salary.setEmpNo(10001);
         salary.setSalary(5001);
-        salary.setFromDate(LocalDate.of(2020,2,1));
-        salary.setToDate(LocalDate.of(2025,2,1));
+        salary.setFromDate(LocalDate.of(2020,2,2));
+        salary.setToDate(LocalDate.of(2025,2,2));
+        salaryMapper.save(salary);
         log.info("over");
     }
 
@@ -56,7 +56,7 @@ public class SalaryTest {
     public void testSqlSession(){
 
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-            List<Salary> list = sqlSession.selectList("com.mgy.springboottutorial.mybatisdemo.SalaryMapper.selectAll",3);
+            List<Salary> list = sqlSession.selectList("com.mgy.springboottutorial.mybatisdemo.mysql.SalaryMapper.selectAll",3);
             list.forEach(System.out::println);
         }
 

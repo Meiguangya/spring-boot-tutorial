@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mgy.springboottutorial.mybatisdemo.pgsql.ActorMapper">
+
+    <!-- 结果映射 -->
+    <resultMap id="ActorResultMap" type="Actor">
+        <id property="actorId" column="actor_id"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="lastUpdate" column="last_update"/>
+    </resultMap>
+
+    <!-- 插入 -->
+    <insert id="insert" parameterType="Actor" useGeneratedKeys="true" keyProperty="actorId">
+        INSERT INTO actor (first_name, last_name, last_update)
+        VALUES (#{firstName}, #{lastName}, #{lastUpdate})
+    </insert>
+
+    <!-- 查询 by ID -->
+    <select id="selectById" resultMap="ActorResultMap" parameterType="int">
+        SELECT actor_id, first_name, last_name, last_update
+        FROM actor
+        WHERE actor_id = #{actorId}
+    </select>
+
+    <!-- 查询所有（带分页） -->
+    <select id="selectAll" resultMap="ActorResultMap" parameterType="int">
+        SELECT actor_id, first_name, last_name, last_update
+        FROM actor
+        ORDER BY actor_id desc
+        <if test="limit != null and limit > 0">
+            LIMIT #{limit}
+        </if>
+    </select>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="Actor">
+        UPDATE actor
+        SET first_name = #{firstName},
+        last_name = #{lastName},
+        last_update = #{lastUpdate}
+        WHERE actor_id = #{actorId}
+    </update>
+
+    <!-- 删除 -->
+    <delete id="deleteById" parameterType="int">
+        DELETE FROM actor
+        WHERE actor_id = #{actorId}
+    </delete>
+
+</mapper>
