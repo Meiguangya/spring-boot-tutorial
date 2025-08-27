@@ -55,17 +55,25 @@
     <logger name="org.apache.ibatis.executor" level="WARN"/>
 
     <!-- ================== 你的业务日志 ================== -->
-
-    <!-- 开发环境：开启 Mapper DEBUG 日志（只输出到控制台） -->
+    <!-- 控制台输出（带颜色，仅 dev/test 环境） -->
     <springProfile name="dev,local,test">
-        <logger name="com.mgy.springboottutorial.mapper" level="DEBUG" additivity="false">
-            <appender-ref ref="ConsoleAppender"/>
-        </logger>
+        <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+            <!-- 使用带颜色的编码器 -->
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <pattern>%d{HH:mm:ss.SSS} %highlight(%-5level) %cyan(%logger{20}) - %msg%n</pattern>
+                <charset>UTF-8</charset>
+            </encoder>
+        </appender>
     </springProfile>
 
-    <!-- 生产环境：关闭 DEBUG -->
+    <!-- 控制台输出（无颜色，prod 环境） -->
     <springProfile name="prod">
-        <logger name="com.mgy.springboottutorial.mapper" level="INFO"/>
+        <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{HH:mm:ss.SSS} %-5level %logger{50} - %msg%n</pattern>
+                <charset>UTF-8</charset>
+            </encoder>
+        </appender>
     </springProfile>
 
     <!-- Root Logger -->
