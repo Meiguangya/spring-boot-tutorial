@@ -85,6 +85,30 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- 集成redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- Lettuce 连接池需要（Spring Boot 3 默认使用 Lettuce） -->
+        <dependency>
+            <groupId>io.lettuce</groupId>
+            <artifactId>lettuce-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.redisson/redisson-spring-boot-starter &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.redisson</groupId>-->
+<!--            <artifactId>redisson-spring-boot-starter</artifactId>-->
+<!--            <version>3.50.0</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <build>
