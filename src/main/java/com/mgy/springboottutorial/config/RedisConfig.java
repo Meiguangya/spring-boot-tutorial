@@ -57,4 +57,12 @@ public class RedisConfig {
         return script;
     }
 
+    @Bean
+    public DefaultRedisScript<Long> msgLikeLuaScript() {
+        DefaultRedisScript<Long> script = new DefaultRedisScript<>();
+        script.setScriptSource(new ResourceScriptSource(new ClassPathResource("lua/msg_like.lua")));
+        script.setResultType(Long.class); // 设置脚本返回值的类型
+        return script;
+    }
+
 }
